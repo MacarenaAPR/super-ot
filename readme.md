@@ -2,7 +2,7 @@
 
 > **Contexto:** Esta guía cubre el despliegue de una aplicación Django en una instancia EC2 de AWS, usando Nginx como servidor web, Gunicorn como servidor WSGI, y GitHub Actions para automatizar el proceso de CI/CD cada vez que se hace push a `main`.
 
-
+[![YouTube Badge](https://img.shields.io/badge/YouTube-Cápsula%20CI/CD-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=F8EhhgzCPxs)
 
 ## Arquitectura General
 
