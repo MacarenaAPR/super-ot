@@ -34,7 +34,7 @@ jobs:
           script: |
             set -e
 
-            cd /home/${{ secrets.USER }}/ot
+            cd /home/${{ secrets.BD_USER }}/ot
 
             cat <<EOT > .env
             DEBUG=${DEBUG}
@@ -50,30 +50,26 @@ jobs:
             sudo apt update
 
             sudo apt install -y \
-            python3
-            python3-dev
-            python3-venv
-            build-essential \
-            libmariadb-dev \
-            pkg-config
+              python3 \
+              python3-dev \
+              python3-venv \
+              build-essential \
+              libmariadb-dev \
+              pkg-config
 
-            if [ ! -f "venv/bin/python3.11" ]; then
+            if [ ! -f "venv/bin/python" ]; then
               rm -rf venv
-              python3.11 -m venv venv
+              python3 -m venv venv
             fi
 
             source venv/bin/activate
 
-            pip install --upgrade pp
+            pip install --upgrade pip
             pip install -r requirements.txt
 
-            # Aplica las migraciones de base de datos
             python manage.py migrate --noinput
-
-            # Recopila los archivos estáticos para que Nginx los sirva
             python manage.py collectstatic --noinput
 
-            # Reinicia Gunicorn para cargar el nuevo código
             sudo systemctl restart gunicorn
 
         env:
