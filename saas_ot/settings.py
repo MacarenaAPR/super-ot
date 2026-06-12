@@ -64,10 +64,21 @@ WSGI_APPLICATION = 'saas_ot.wsgi.application'
 #     }
 # }
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+# Oracle Wallet
+os.environ["TNS_ADMIN"] = "/home/ubuntu/wallet"
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': os.environ.get('DB_NAME', 'dqnrzt78d6nnwnzd_medium'),
+        'USER': os.environ.get('DB_USER', 'ADMIN'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
     }
 }
 
