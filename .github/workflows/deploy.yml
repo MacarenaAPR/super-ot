@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           envs: >
-            DEBUG,SECRETE_KEY,ALLOWED_HOSTS,DB_NAME,USER,DB_PASSWORD,DB_HOST,DB_PORT
+            DEBUG,SECRET_KEY,ALLOWED_HOSTS,DB_NAME,DB_USER,DB_PASSWORD,TNS_ADMIN
           script: |
             set -e
 
@@ -38,13 +38,12 @@ jobs:
 
             cat <<EOT > .env
             DEBUG=${DEBUG}
-            SECRETE_KEY=${SECRETE_KEY}
+            SECRET_KEY=${SECRET_KEY}
             ALLOWED_HOSTS=${ALLOWED_HOSTS}
             DB_NAME=${DB_NAME}
-            USER=${USER}
+            DB_USER=${DB_USER}
             DB_PASSWORD=${DB_PASSWORD}
-            DB_HOST=${DB_HOST}
-            DB_PORT=${DB_PORT}
+            TNS_ADMIN=${TNS_ADMIN}
             EOT
 
             sudo apt update
@@ -54,7 +53,6 @@ jobs:
               python3-dev \
               python3-venv \
               build-essential \
-              libmariadb-dev \
               pkg-config
 
             if [ ! -f "venv/bin/python" ]; then
@@ -74,10 +72,9 @@ jobs:
 
         env:
           DEBUG: ${{ secrets.DEBUG }}
-          SECRETE_KEY: ${{ secrets.SECRETE_KEY }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DB_NAME: ${{ secrets.DB_NAME }}
-          USER: ${{ secrets.USER }}
+          DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
+          TNS_ADMIN: ${{ secrets.TNS_ADMIN }}
