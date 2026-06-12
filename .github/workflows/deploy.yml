@@ -47,7 +47,7 @@ jobs:
             DB_PORT=${DB_PORT}
             EOT
 
-            sudo dnf install python3.11 python3.11-devel mariadb105-devel pkgconfig gcc -y
+            sudo apt install python3.11 python3.11-devel mariadb105-devel pkgconfig gcc -y
 
             if [ ! -f "venv/bin/python3.11" ]; then
               rm -rf venv
