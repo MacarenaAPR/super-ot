@@ -71,13 +71,16 @@ WSGI_APPLICATION = 'saas_ot.wsgi.application'
 #    }
 #}
 # Oracle Wallet
-os.environ["TNS_ADMIN"] = "/home/ubuntu/wallet"
+os.environ["TNS_ADMIN"] = os.environ.get(
+    "TNS_ADMIN",
+    "/home/ubuntu/oracle/instantclient_23_8/network/admin"
+)
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': os.environ.get('DB_NAME', 'dqnrzt78d6nnwnzd_medium'),
-        'USER': os.environ.get('USER', 'ADMIN'),
+        'USER': os.environ.get('DB_USER', 'ADMIN'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
     }
 }
