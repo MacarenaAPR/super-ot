@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           envs: >
-            DEBUG,SECRET_KEY,ALLOWED_HOSTS,DB_NAME,USER,DB_PASSWORD,DB_HOST,DB_PORT
+            DEBUG,SECRETE_KEY,ALLOWED_HOSTS,DB_NAME,USER,DB_PASSWORD,DB_HOST,DB_PORT
           script: |
             set -e
 
@@ -38,7 +38,7 @@ jobs:
 
             cat <<EOT > .env
             DEBUG=${DEBUG}
-            SECRET_KEY=${SECRET_KEY}
+            SECRETE_KEY=${SECRETE_KEY}
             ALLOWED_HOSTS=${ALLOWED_HOSTS}
             DB_NAME=${DB_NAME}
             USER=${USER}
@@ -74,7 +74,7 @@ jobs:
 
         env:
           DEBUG: ${{ secrets.DEBUG }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SECRETE_KEY: ${{ secrets.SECRETE_KEY }}
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DB_NAME: ${{ secrets.DB_NAME }}
           USER: ${{ secrets.USER }}
