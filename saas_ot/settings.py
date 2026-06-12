@@ -6,7 +6,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key')
+SECRETE_KEY = os.environ.get('SECRETE_KEY', 'django-insecure-default-key')
 
 DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
 
@@ -77,7 +77,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': os.environ.get('DB_NAME', 'dqnrzt78d6nnwnzd_medium'),
-        'USER': os.environ.get('DB_USER', 'ADMIN'),
+        'USER': os.environ.get('USER', 'ADMIN'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
     }
 }
