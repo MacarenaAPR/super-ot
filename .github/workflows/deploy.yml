@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           envs: >
-            DEBUG,SECRET_KEY,ALLOWED_HOSTS,DB_NAME,DB_USER,DB_PASSWORD,TNS_ADMIN
+            DEBUG,SECRET_KEY,ALLOWED_HOSTS,DB_NAME,DB_USER,DB_PASSWORD,TNS_ADMIN,WALLET_PASSWORD
           script: |
             set -e
 
@@ -44,6 +44,7 @@ jobs:
             DB_USER=${DB_USER}
             DB_PASSWORD=${DB_PASSWORD}
             TNS_ADMIN=${TNS_ADMIN}
+            WALLET_PASSWORD=${WALLET_PASSWORD}
             EOT
 
             sudo apt update
@@ -78,3 +79,4 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           TNS_ADMIN: ${{ secrets.TNS_ADMIN }}
+          WALLET_PASSWORD: ${{ secrets.WALLET_PASSWORD }}
